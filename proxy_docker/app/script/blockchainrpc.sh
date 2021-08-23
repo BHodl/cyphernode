@@ -77,6 +77,14 @@ get_blockchain_info() {
   return $?
 }
 
+get_mining_info() {
+  trace "Entering get_mining_info()..."
+
+  local data='{"method":"getmininginfo"}'
+  send_to_watcher_node "${data}" | jq ".result"
+  return $?
+}
+
 get_mempool_info() {
   trace "Entering get_mempool_info()..."
 

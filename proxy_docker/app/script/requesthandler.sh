@@ -591,6 +591,12 @@ main() {
           response_to_client "${response}" ${?}
           break
           ;;
+        getmininginfo)
+          # http://192.168.111.152:8080/getmininginfo
+
+          response=$(get_mining_info)
+          response_to_client "${response}" ${?}
+          ;;
         getmempoolinfo)
           # curl GET http://192.168.111.152:8080/getmempoolinfo
 

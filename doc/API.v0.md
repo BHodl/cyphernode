@@ -356,7 +356,25 @@ When cyphernode receives a transaction confirmation (/conf endpoint) on a watche
   "blockheight":""
 }
 ```
+### Get the mining information (called by your application)
 
+Returns the mining information of the Bitcoin node.
+
+```http
+GET http://cyphernode:8888/getmininginfo
+```
+
+Proxy response:
+```json
+{
+  "blocks": 697264,
+  "difficulty": 15556093717702.55,
+  "networkhashps": 1.657879694896906e+20,
+  "pooledtx": 136,
+  "chain": "main",
+  "warnings": ""
+}
+```
 ### Get mempool information
 
 Returns the mempool information of the Bitcoin node.

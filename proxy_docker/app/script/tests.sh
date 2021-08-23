@@ -34,6 +34,21 @@ tests()
 	fi
 	echo "Tested getbestblockinfo."
 
+	# getmininginfo
+	# curl (GET) http://proxy:8888/getmininginfo
+
+	echo "Testing getmininginfo..."
+	response=$(curl -s proxy:8888/getmininginfo)
+	response2=$(curl -s proxy:8888/getblockchaininfo)
+	echo "response=${response}"
+	local blockheight=$(echo ${response} | jq ".blocks" | tr -d '\"')
+	local block=$(echo ${response2} | jq ".blocks" | tr -d '\"')
+	echo "blockheight=${blockheight}"
+	if [ "${blockheight}" != "${block}" ]; then
+		exit 4
+	fi
+	echo "Tested getmininginfo."
+
 	# getblockinfo
 	# (GET) http://proxy:8888/getblockinfo/000000006f82a384c208ecfa04d05beea02d420f3f398ddda5c7f900de5718ea
 
