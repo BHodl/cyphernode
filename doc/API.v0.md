@@ -375,6 +375,24 @@ Proxy response:
   "warnings": ""
 }
 ```
+### Get Bitcoin hashrare per seconds. Optional block parameter. (called by your application)
+
+Return block height and the hashrate per seconds of block. Default is the last best block, but can specify block height.
+
+```http
+GET http://cyphernode:8888/getblockhashps
+GET http://cyphernode:8888/getblockhashps/nBlock
+```
+
+Proxy response:
+
+```json
+{
+  "blocks":"272743",
+  "hashps":868368880216665.2
+}
+```
+
 ### Get mempool information
 
 Returns the mempool information of the Bitcoin node.
