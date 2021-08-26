@@ -806,8 +806,8 @@ paths:
       parameters:
         - in: "path"
           name: "height"
-          description: "Blockhash"
-          required: false
+          description: "Blockheight"
+          required: true
           schema:
            type: "integer"
       tags:

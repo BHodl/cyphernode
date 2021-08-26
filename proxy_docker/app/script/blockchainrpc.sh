@@ -103,16 +103,10 @@ get_blockhash() {
 
 get_blockhashps() {
   trace "Entering get_blockhashps()..."
-  if [ -n "${1}" ]; then
-    local blockheight=${1}
-  else
-    data="{\"method\":\"getblockchaininfo\"}"
-    blockheight=send_to_watcher_node "${data}" | jq ".blocks"
-  fi    
+  blockheight=${1}
   local data="{\"method\":\"getnetworkhashps\",\"params\":[${blockheight}]}"
   send_to_watcher_node "${data}"
-  hashps=$?
-  return "{\"blocks\":\"${blockheight}\",\"hashps\":\"${hashps}\"}"
+  return $?
 }
 
 validateaddress() {
