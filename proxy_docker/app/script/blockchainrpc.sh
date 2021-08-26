@@ -108,6 +108,7 @@ get_blockhashps() {
   else
     data="{\"method\":\"getblockchaininfo\"}"
     blockheight=send_to_watcher_node "${data}" | jq ".blocks"
+  fi    
   local data="{\"method\":\"getnetworkhashps\",\"params\":[${blockheight}]}"
   send_to_watcher_node "${data}"
   hashps=$?
