@@ -254,10 +254,11 @@ main() {
           response_to_client "${response}" ${?}
           break
           ;;
-        getblockhashps)
-          # curl (GET) http://192.168.111.152:8080/getblockhashps/522322
+        getnetworkhashps)
+          # POST http://192.168.111.152:8080/getnetworkhashps
+          # BODY {"height":541845,"nblocks":120}
 
-          response=$(get_blockhashps $(echo "${line}" | cut -d ' ' -f2 | cut -d '/' -f3))
+          response=$(get_networkhashps "${line}")
           response_to_client "${response}" ${?}
           break
           ;;

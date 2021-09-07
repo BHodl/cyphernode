@@ -801,21 +801,27 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiResponseTemporarilyUnavailable'
-  /getblockhashps/{height}:
-    get:
-      parameters:
-        - in: "path"
-          name: "height"
-          description: "Blockheight"
-          required: true
-          schema:
-           type: "integer"
+  /getnetworkhashps:
+    post:
       tags:
-        - "block"
+        - "mining"
+        - "hashrate"
         - "core features"
-      summary: "Get block hashrate per seconds matching height provided."
-      description: "Returns the block matching the height provided and the hashrate per seconds."
-      operationId: "getBlockHashps"
+      summary: "Get hashrate per seconds matching nblocks and height provided."
+      description: "Returns hash per seconds."
+      operationId: "getNetworkHashps"
+      requestBody:
+        description: "Block height and number of blocks requested."
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                height:
+                  type: "number"
+                nblocks:
+                  type: "number"
       responses:
         '200':
           description: "successful operation"

@@ -377,11 +377,12 @@ Proxy response:
 ```
 ### Get Bitcoin hashrare per seconds. Optional block parameter. (called by your application)
 
-Return the hashrate per seconds of a single block. Default is the last block, but can specify block height.
+Return the hashrate per seconds of block(s). Default is the blocks since the last difficulty adjustement, but can specify block height and number of blocks.
 
 ```http
-GET http://cyphernode:8888/getblockhashps
-GET http://cyphernode:8888/getblockhashps/nBlock
+POST http://cyphernode:8888/getnetworkhashps
+with body...
+{"height":605412, "nblocks":120}
 ```
 
 Proxy response:

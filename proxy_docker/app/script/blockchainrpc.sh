@@ -101,11 +101,15 @@ get_blockhash() {
   return $?
 }
 
-get_blockhashps() {
-  trace "Entering get_blockhashps()..."
-  blockheight=${1}
-  local data="{\"method\":\"getnetworkhashps\",\"params\":[${blockheight}]}"
-  send_to_watcher_node "${data}"
+get_networkhashps() {
+  trace "Entering get_networkhashps()..."
+  local response
+  local request=${1}
+  local height=$(echo "${request}" | jq -r ".height")
+  local nblocks=$(echo "${request}" | jq -r ".nblocks")
+  local data="{\"method\":\"getnetworkhashps\",\"params\":[${nblocks},${height}]}"
+  response=$(send_to_watcher_node "${data}")
+  echo "${response}"
   return $?
 }
 
