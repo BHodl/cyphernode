@@ -108,7 +108,8 @@ get_networkhashps() {
   local height=$(echo "${request}" | jq -r ".height")
   local nblocks=$(echo "${request}" | jq -r ".nblocks")
   local data="{\"method\":\"getnetworkhashps\",\"params\":[${nblocks},${height}]}"
-  response=$(send_to_watcher_node "${data}")
+  hashps=$(send_to_watcher_node "${data}") | jq ".result"
+  response = "{\"height\":${height},\"nblocks\":${nblocks},\"hashps\":${hashps}}"
   echo "${response}"
   return $?
 }
