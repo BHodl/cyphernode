@@ -358,7 +358,7 @@ When cyphernode receives a transaction confirmation (/conf endpoint) on a watche
 ```
 ### Get the mining information (called by your application)
 
-Returns the mining informations of the last block.
+Returns the mining informations of the current block.
 
 ```http
 GET http://cyphernode:8888/getmininginfo
@@ -375,23 +375,23 @@ Proxy response:
   "warnings": ""
 }
 ```
-### Get Bitcoin hashrare per seconds. Optional block parameter. (called by your application)
+### Get Bitcoin estimated hashrare per seconds. Optional block parameters. (called by your application)
 
-Return the hashrate per seconds of block(s). Default is the blocks since the last difficulty adjustement, but can specify block height and number of blocks.
+Return the estimated hashrate per seconds of block(s). Default is the blocks since the last difficulty adjustement(-1), but can specify block height and number of blocks.
 
 ```http
 POST http://cyphernode:8888/getnetworkhashps
 with body...
-{"height":605412, "nblocks":120}
+{"height":-1, "nblocks":120}
 ```
 
 Proxy response:
 
 ```json
 {
-  "result": 3.675466216237487e+18,
-  "error": null,
-  "id": null
+  "height": -1,
+  "nblocks": 120,
+  "hashps": 127647856311107400000
 }```
 
 ### Get mempool information
