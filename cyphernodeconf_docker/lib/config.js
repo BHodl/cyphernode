@@ -13,11 +13,10 @@ const schemas = {
   '0.2.3': require('../schema/config-v0.2.3.json'),
   '0.2.4': require('../schema/config-v0.2.4.json'),
   '0.2.5': require('../schema/config-v0.2.5.json'),
-  '0.2.6': require('../schema/config-v0.2.6.json'),
   '0.2.6.liquid': require('../schema/config-v0.2.6.liquid.json')
 };
 
-const versionHistory = [ '0.1.0', '0.2.0', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.2.5.liquid', '0.2.6', '0.2.6.liquid' ];
+const versionHistory = [ '0.1.0', '0.2.0', '0.2.2', '0.2.3', '0.2.4', '0.2.5', '0.2.6.liquid' ];
 const defaultSchemaVersion=versionHistory[0];
 const latestSchemaVersion=versionHistory[versionHistory.length-1];
 
