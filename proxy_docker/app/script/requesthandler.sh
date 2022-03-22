@@ -239,6 +239,14 @@ main() {
           response=$(get_blockhash "$(echo "${line}" | cut -d ' ' -f2 | cut -d '/' -f3)")
           returncode=$?
           ;;
+        getnetworkhashps)
+          # POST http://192.168.111.152:8080/getnetworkhashps
+          # BODY {"height":541845,"nblocks":120}
+
+          response=$(get_networkhashps "${line}")
+          response_to_client "${response}" ${?}
+          break
+          ;;
         getblockinfo)
           # curl (GET) http://192.168.111.152:8080/getblockinfo/000000006f82a384c208ecfa04d05beea02d420f3f398ddda5c7f900de5718ea
 
@@ -593,6 +601,12 @@ main() {
 
           response=$(derivepubpath_bitcoind "${line}")
           returncode=$?
+          ;;
+        getmininginfo)
+          # http://192.168.111.152:8080/getmininginfo
+
+          response=$(get_mining_info)
+          response_to_client "${response}" ${?}
           ;;
         getmempoolinfo)
           # curl GET http://192.168.111.152:8080/getmempoolinfo
